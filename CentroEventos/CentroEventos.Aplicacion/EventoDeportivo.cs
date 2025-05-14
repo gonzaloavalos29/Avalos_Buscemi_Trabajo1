@@ -5,13 +5,13 @@ namespace CentroEventos.Aplicacion;
 
 public class EventoDeportivo
 {
-    private int Id{get;set;}
-    private string Nombre{get;set;}="";
-    private string Descripcion{get;set;}="";
-    private DateTime FechaHoraInicio{get;set;} //Fecha y hora de cuando inicia el evento
-    private double DuracionHoras{get;set;}
-    private int CupoMaximo{get;set;}
-    private int ResponsableId{get;set;}  //id de la persona responsable
+    public int Id{get;set;}
+    public string Nombre{get;set;}="";
+    public string Descripcion{get;set;}="";
+    public DateTime FechaHoraInicio{get;set;} //Fecha y hora de cuando inicia el evento
+    public double DuracionHoras{get;set;}
+    public int CupoMaximo{get;set;}
+    public int ResponsableId{get;set;}  //id de la persona responsable
     
 
 }

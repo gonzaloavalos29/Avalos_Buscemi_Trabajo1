@@ -1,6 +1,3 @@
 namespace CentroEventos.Aplicacion;
 
-public enum EstadoAsistencia
-{
-
-}
+public enum EstadoAsistencia{Pendiente,Presente,Ausente}

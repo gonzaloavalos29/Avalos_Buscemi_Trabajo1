@@ -15,19 +15,15 @@ public class ValidadorReserva {
     }
     public void Validar(Reserva reserva) {
             var Persona = _repoPersona.ObtenerPorId(reserva.PersonaId);
-            if (Persona == null) {
-                throw new EntidadNotFoundException("Persona no encontrada");
-            }
             var EventoDeportivo = _repoEvento.ObtenerPorId(reserva.EventoDeportivoId);
-            if (EventoDeportivo == null) {
-                throw new EntidadNotFoundException("Evento Deportivo no encontrado");
-            }
             var cantReservas = _repoReservas.ListarPorEvento(reserva.EventoDeportivoId).Count;
-            if (cantReservas >= EventoDeportivo.CupoMaximo) {
+            if (Persona == null)
+                throw new EntidadNotFoundException("Persona no encontrada");
+            if (EventoDeportivo == null)
+                throw new EntidadNotFoundException("Evento Deportivo no encontrado");
+            if (cantReservas >= EventoDeportivo.CupoMaximo)
                 throw new CupoExcedidoException();
-            }
-            if (_repoReservas.ExisteReserva(reserva.PersonaId, reserva.EventoDeportivoId)) {
+            if (_repoReservas.ExisteReserva(reserva.PersonaId, reserva.EventoDeportivoId))
                 throw new DuplicadoException("La Persona ya tiene una reserva para este evento");
-            }
     }
 }

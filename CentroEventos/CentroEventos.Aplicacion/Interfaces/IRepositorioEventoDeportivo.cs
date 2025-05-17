@@ -1,4 +1,3 @@
-using System;
 using CentroEventos.Aplicacion.Entidades;
 
 namespace CentroEventos.Aplicacion.Interfaces;

@@ -1,7 +1,7 @@
 using System;
 
-namespace CentroEventos.Aplicacion {
-    public interface IServicioAutorizacion {
-        bool PoseeElPermiso(int idUsuario, Permiso permiso);
-    }
+namespace CentroEventos.Aplicacion.Servicios; 
+
+public interface IServicioAutorizacion {
+    bool PoseeElPermiso(int idUsuario, Permiso permiso);
 }

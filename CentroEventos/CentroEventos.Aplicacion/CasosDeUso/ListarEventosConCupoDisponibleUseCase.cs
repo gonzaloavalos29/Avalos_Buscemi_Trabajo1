@@ -1,6 +1,8 @@
-using System;
-namespace CentroEventos.Aplicacion.CasosDeUso;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Excepciones;
 
+namespace CentroEventos.Aplicacion.CasosDeUso;
 public class ListarEventosConCupoDisponibleUseCase {
     private readonly IRepositorioEventoDeportivo _repoEvento;
     private readonly IRepositorioReserva _repoReserva;

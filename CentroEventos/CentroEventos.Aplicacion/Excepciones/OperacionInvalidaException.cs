@@ -1,8 +1,5 @@
-using System;
+namespace CentroEventos.Aplicacion.Excepciones;
 
-namespace CentroEventos.Aplicacion;
-
-public class OperacionInvalidaException:Exception
-{
+public class OperacionInvalidaException:Exception {
     public OperacionInvalidaException(string m):base(m){}
 }

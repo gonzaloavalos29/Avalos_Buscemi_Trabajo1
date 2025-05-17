@@ -1,7 +1,4 @@
-using System;
-using System.Dynamic;
-
-namespace CentroEventos.Aplicacion;
+namespace CentroEventos.Aplicacion.Entidades;
 
 public class EventoDeportivo {
     public int Id{get;set;}

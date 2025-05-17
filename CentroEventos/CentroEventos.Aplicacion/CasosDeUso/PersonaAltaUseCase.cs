@@ -1,5 +1,6 @@
-using System;
-
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
 namespace CentroEventos.Aplicacion.CasosDeUso;
 
 public class PersonaAltaUseCase

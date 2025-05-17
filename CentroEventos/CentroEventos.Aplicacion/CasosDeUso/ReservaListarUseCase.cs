@@ -1,9 +1,8 @@
-using System;
-
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
 namespace CentroEventos.Aplicacion.CasosDeUso;
 
-public class ReservaListarUseCase
-{
+public class ReservaListarUseCase {
     private readonly IRepositorioReserva _repo;
     public ReservaListarUseCase(IRepositorioReserva repo){
         _repo=repo;

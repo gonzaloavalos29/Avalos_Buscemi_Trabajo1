@@ -1,4 +1,5 @@
-using System;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
 
 namespace CentroEventos.Aplicacion.CasosDeUso;
 

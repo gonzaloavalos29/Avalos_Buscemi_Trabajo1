@@ -1,8 +1,5 @@
-using System;
+namespace CentroEventos.Aplicacion.Excepciones;
 
-namespace CentroEventos.Aplicacion;
-
-public class EntidadNotFoundException:Exception
-{
+public class EntidadNotFoundException:Exception {
     public EntidadNotFoundException(string m):base(m){}
 }

@@ -1,9 +1,7 @@
-using System;
+using CentroEventos.Aplicacion.Servicios;
+namespace CentroEventos.Aplicacion.Entidades;
 
-namespace CentroEventos.Aplicacion;
-
-public class Reserva
-{
+public class Reserva {
     public int Id{get;set;}
     public int PersonaId{get;set;} 
     public int EventoDeportivoId{get;set;}

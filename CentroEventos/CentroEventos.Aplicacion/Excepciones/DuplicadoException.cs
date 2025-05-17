@@ -1,8 +1,5 @@
-using System;
+namespace CentroEventos.Aplicacion.Excepciones;
 
-namespace CentroEventos.Aplicacion;
-
-public class DuplicadoException:Exception
-{
+public class DuplicadoException:Exception {
     public DuplicadoException(string m):base(m){}
 }

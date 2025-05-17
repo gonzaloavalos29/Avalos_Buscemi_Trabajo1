@@ -1,8 +1,5 @@
-using System;
+namespace CentroEventos.Aplicacion.Excepciones;
 
-namespace CentroEventos.Aplicacion;
-
-public class CupoExcedidoException:Exception
-{
+public class CupoExcedidoException:Exception {
     public CupoExcedidoException():base("No hay cupo disponible"){}
 }

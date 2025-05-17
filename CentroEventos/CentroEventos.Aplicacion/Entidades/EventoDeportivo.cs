@@ -3,8 +3,7 @@ using System.Dynamic;
 
 namespace CentroEventos.Aplicacion;
 
-public class EventoDeportivo
-{
+public class EventoDeportivo {
     public int Id{get;set;}
     public string Nombre{get;set;}="";
     public string Descripcion{get;set;}="";
@@ -12,6 +11,4 @@ public class EventoDeportivo
     public double DuracionHoras{get;set;}
     public int CupoMaximo{get;set;}
     public int ResponsableId{get;set;}  //id de la persona responsable
-    
-
 }

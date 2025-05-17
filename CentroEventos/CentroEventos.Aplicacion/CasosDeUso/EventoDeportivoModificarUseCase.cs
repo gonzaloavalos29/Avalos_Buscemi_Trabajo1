@@ -13,7 +13,7 @@ public class EventoDeportivoModificarUseCase
     public EventoDeportivoModificarUseCase(IRepositorioEventoDeportivo repositorioEventoDeportivo, IRepositorioPersona repoPersona)
     {
         _repoEvento = repositorioEventoDeportivo;
-        _Validar = new ValidadorEventoDeportivo(repoPersona, repositorioEventoDeportivo);
+        _Validar = new ValidadorEventoDeportivo(_repoEvento, repoPersona);
     }
 
     public void Ejecutar(EventoDeportivo evento)

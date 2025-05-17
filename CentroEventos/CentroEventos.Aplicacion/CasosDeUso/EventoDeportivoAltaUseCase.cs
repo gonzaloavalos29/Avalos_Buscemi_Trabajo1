@@ -6,12 +6,12 @@ namespace CentroEventos.Aplicacion.CasosDeUso;
 
 public class EventoDeportivoAltaUseCase
 {
-    private readonly IRepositorioEventoDeportivo _repoEvento;
+    private IRepositorioEventoDeportivo _repoEvento;
     private readonly ValidadorEventoDeportivo _Validador;
 
-    public EventoDeportivoAltaUseCase(IRepositorioEventoDeportivo repoEvento, IRepositorioPersona _repoPersona){
-        _repoEvento=repoEvento;
-        _Validador= new ValidadorEventoDeportivo(_repoPersona,_repoEvento);
+    public EventoDeportivoAltaUseCase(IRepositorioEventoDeportivo repoEvento, IRepositorioPersona repoPersona){
+        _repoEvento = repoEvento;
+        _Validador= new ValidadorEventoDeportivo(_repoEvento, repoPersona);
     }
 
     public void Ejecutar(EventoDeportivo evento){

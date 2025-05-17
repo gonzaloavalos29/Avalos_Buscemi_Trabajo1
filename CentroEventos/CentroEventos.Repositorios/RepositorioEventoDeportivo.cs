@@ -8,13 +8,11 @@ namespace CentroEventos.Repositorios {
         private readonly string archivo = "Eventos/eventos.csv";
         private readonly string archivoId = "Eventos/ultimoId.txt";
 
-        public void Agregar(EventoDeportivo eventoDeportivo)
-        {
+        public void Agregar(EventoDeportivo eventoDeportivo) {
             throw new NotImplementedException();
         }
 
-        public void Eliminar(int Id)
-        {
+        public void Eliminar(int Id) {
             throw new NotImplementedException();
         }
 
@@ -26,18 +24,15 @@ namespace CentroEventos.Repositorios {
             File.AppendAllLines(archivo, new[] { linea });
         }
 
-        public List<EventoDeportivo> ListarTodos()
-        {
+        public List<EventoDeportivo> ListarTodos() {
             throw new NotImplementedException();
         }
 
-        public void Modificar(EventoDeportivo eventoDeportivo)
-        {
+        public void Modificar(EventoDeportivo eventoDeportivo) {
             throw new NotImplementedException();
         }
 
-        public EventoDeportivo? ObtenerPorId(int Id)
-        {
+        public EventoDeportivo? ObtenerPorId(int Id) {
             throw new NotImplementedException();
         }
 

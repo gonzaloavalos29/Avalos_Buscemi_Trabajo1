@@ -4,23 +4,16 @@ using CentroEventos.Aplicacion.Excepciones;
 namespace CentroEventos.Aplicacion.Validadores;
 
 public class ValidadorEventoDeportivo {
-    private readonly IRepositorioEventoDeportivo _repoEventoDeportivo;
-    private readonly IRepositorioPersona _repoPersona;
+
     private IRepositorioPersona repoPersona;
     private IRepositorioEventoDeportivo repoEvento;
-
     public ValidadorEventoDeportivo(IRepositorioEventoDeportivo repositorioEventoDeportivo, IRepositorioPersona repositorioPersona){
-        _repoEventoDeportivo = repositorioEventoDeportivo;
-        _repoPersona = repositorioPersona;
-    }
-
-    public ValidadorEventoDeportivo(IRepositorioPersona repoPersona, IRepositorioEventoDeportivo repoEvento) {
-        this.repoEvento = repoEvento;
-        this.repoPersona = repoPersona;
+        this.repoEvento = repositorioEventoDeportivo;
+        this.repoPersona = repositorioPersona;
     }
 
     public void Validar(EventoDeportivo eventoDeportivo) {
-        var Persona = _repoPersona.ObtenerPorId(eventoDeportivo.ResponsableId);
+        var Persona = this.repoPersona.ObtenerPorId(eventoDeportivo.ResponsableId);
         if (Persona == null)
             throw new EntidadNotFoundException("Responsable no encontrado");
         if (eventoDeportivo.CupoMaximo < 0)

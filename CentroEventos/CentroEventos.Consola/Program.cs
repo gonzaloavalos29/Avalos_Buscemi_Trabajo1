@@ -1,6 +1,7 @@
 ﻿using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Repositorios;
 using CentroEventos.Aplicacion.Servicios;
+using CentroEventos.Aplicacion.CasosDeUso;
 
 var servicioAutorizacion = new ServicioAutorizacionProvisorio();
 var repoEvento = new RepositorioEventoDeportivo();

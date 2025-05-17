@@ -11,7 +11,7 @@ public class ListarEventosConCupoDisponibleUseCase {
     }
 
     public List<EventoDeportivo> Ejecutar() {
-        var eventosFuturos = _repoEvento.ListarTodos().Where(e => e.FechaHoraInicio > DateTime.Now).toList();
+        var eventosFuturos = _repoEvento.ListarTodos().Where(e => e.FechaHoraInicio > DateTime.Now).ToList();
         var resultado = new List<EventoDeportivo>();
         foreach(var evento in eventosFuturos) {
             var reservas = _repoReserva.ListarPorEvento(evento.Id);

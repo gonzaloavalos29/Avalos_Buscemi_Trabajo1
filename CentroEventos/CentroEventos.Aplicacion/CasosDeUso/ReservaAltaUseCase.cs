@@ -16,12 +16,9 @@ public class ReservaAltaUseCase {
 // Validar que el usuario esta autorizado
         if (!_servicioAutorizacion.PoseeElPermiso(idUsuario,Permiso.ReservaAlta))
             throw new FalloAutorizacionException();
-            
 // Usamos el validador de reserva
         _validador.Validar(datosReserva);
-
 // Completar datos de la reserva antes de guardar
-
         datosReserva.FechaAltaReserva = DateTime.Now;
         datosReserva.EstadoAsistencia = EstadoAsistencia.Pendiente;
 // Agregar la reserva al repositorio

@@ -2,8 +2,7 @@ using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Interfaces;
 
 namespace CentroEventos.Repositorios;
-public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo
-{
+public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo {
     private readonly string archivo = "Eventos/eventos.csv";
     private readonly string archivoId = "Eventos/ultimoId.txt";
 
@@ -16,7 +15,7 @@ public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo
     public void Agregar(EventoDeportivo evento) {
         evento.Id = ObtenerNuevoId();
         var linea = $"{evento.Id},{evento.Nombre},{evento.FechaHoraInicio:yyyy-MM-dd},{evento.Lugar}";
-        File.AppendAllLines(archivo, new[] { linea });
+        File.AppendAllLines(archivo, [linea]);
     }
 
     public void Modificar(EventoDeportivo evento) {
@@ -56,8 +55,7 @@ public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo
         var index = eventos.FindIndex(e => e.Id == evento.Id);
         if (index >= 0)
             eventos[index] = evento;
-        else
-        {
+        else {
             evento.Id = ObtenerNuevoId();
             eventos.Add(evento);
         }

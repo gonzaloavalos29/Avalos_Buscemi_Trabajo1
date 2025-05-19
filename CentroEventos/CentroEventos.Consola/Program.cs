@@ -1,15 +1,10 @@
-﻿using CentroEventos.Aplicacion.Entidades;
-using CentroEventos.Repositorios;
-using CentroEventos.Aplicacion.Servicios;
-using CentroEventos.Aplicacion.CasosDeUso;
+﻿using CentroEventos.Aplicacion.Servicios;
 
 var servicioAutorizacion = new ServicioAutorizacionProvisorio();
-var repoEvento = new RepositorioEventoDeportivo();
-var useCase = new CrearEventoUseCase(servicioAutorizacion, repoEvento);
 
-try {
-    useCase.Ejecutar(1, new EventoDeportivo { Nombre = "Torneo Futbol", FechaHoraInicio = DateTime.Today});
-    Console.WriteLine("Evento creado correctamente.");
-} catch (UnauthorizedAccessException ex) {
-    Console.WriteLine(ex.Message);
-}
+int usuarioId = 1;
+var permiso = Permiso.EventoAlta;
+
+bool tienePermiso = servicioAutorizacion.PoseeElPermiso(usuarioId, permiso);
+
+Console.WriteLine($"¿El usuario {usuarioId} tiene el permiso {permiso}? {tienePermiso}");

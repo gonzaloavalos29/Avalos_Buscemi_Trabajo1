@@ -1,10 +1,42 @@
-﻿using CentroEventos.Aplicacion.Servicios;
+﻿using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Repositorios;
 
-var servicioAutorizacion = new ServicioAutorizacionProvisorio();
+// Crear una instancia del repositorio
+var repo = new RepositorioPersona();
 
-int usuarioId = 1;
-var permiso = Permiso.EventoAlta;
+// Agregar una persona
+var persona = new Persona {
+    Nombre = "Ana",
+    Apellido = "Pérez",
+    DNI = "12345678",
+    Email = "ana.perez@email.com"
+};
 
-bool tienePermiso = servicioAutorizacion.PoseeElPermiso(usuarioId, permiso);
+repo.Agregar(persona);
+Console.WriteLine($"Persona agregada con ID: {persona.Id}");
 
-Console.WriteLine($"¿El usuario {usuarioId} tiene el permiso {permiso}? {tienePermiso}");
+// Listar personas
+Console.WriteLine("Listado de personas:");
+foreach (var p in repo.Listar()) {
+    Console.WriteLine($"{p.Id}: {p.Nombre} {p.Apellido} - DNI: {p.DNI} - Email: {p.Email}");
+}
+
+// Buscar por ID
+int idBuscar = 1;
+var encontrada = repo.ObtenerPorId(idBuscar);
+if (encontrada is not null) {
+    Console.WriteLine($"Persona con ID {idBuscar}: {encontrada.Nombre} {encontrada.Apellido}");
+} else {
+    Console.WriteLine($"Persona con ID {idBuscar} no encontrada.");
+}
+
+// Modificar persona
+if (encontrada is not null) {
+    encontrada.Email = "nueva.direccion@email.com";
+    repo.Modificar(encontrada);
+    Console.WriteLine($"Persona con ID {encontrada.Id} modificada.");
+}
+
+// Eliminar persona
+// repo.Eliminar(1);
+// Console.WriteLine("🗑 Persona con ID 1 eliminada.");

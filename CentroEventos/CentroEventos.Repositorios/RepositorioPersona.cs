@@ -15,8 +15,7 @@ public class RepositorioPersona : IRepositorioPersona {
         GuardarTodas(personas);
     }
 
-    public void Agregar(Persona persona)
-    {
+    public void Agregar(Persona persona) {
         persona.Id = ObtenerNuevoId();
         Directory.CreateDirectory("Personas");
         var linea = $"{persona.Id},{persona.Nombre},{persona.Apellido},{persona.DNI},{persona.Email}";

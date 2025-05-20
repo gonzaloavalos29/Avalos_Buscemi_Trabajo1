@@ -29,13 +29,15 @@ public class RepositorioPersona : IRepositorioPersona {
         foreach (var linea in File.ReadAllLines(archivo)) {
             var partes = linea.Split(',');
             if (partes.Length >= 5) {
-                personas.Add(new Persona {
+                personas.Add(new Persona
+                {
                     // trim: eliminar espacios en blanco al inicio y al final de una cadena de texto
                     Id = int.Parse(partes[0]),
-                    Nombre = partes[1].Trim(), 
+                    Nombre = partes[1].Trim(),
                     Apellido = partes[2].Trim(),
                     DNI = partes[3].Trim(),
-                    Email = partes[4].Trim()
+                    Email = partes[4].Trim(),
+                    Telefono= partes[5].Trim()
                 });
             }
         }
@@ -86,7 +88,7 @@ public class RepositorioPersona : IRepositorioPersona {
     }
 
     private void GuardarTodas(List<Persona> personas) {
-        var lineas = personas.Select(p => $"{p.Id},{p.Nombre},{p.Apellido},{p.DNI},{p.Email}");
+        var lineas = personas.Select(p => $"{p.Id},{p.Nombre},{p.Apellido},{p.DNI},{p.Email},{p.Telefono}");
         File.WriteAllLines(archivo, lineas);
     }
 }

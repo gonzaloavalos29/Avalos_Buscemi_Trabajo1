@@ -68,7 +68,7 @@ public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo {
     }
 
     private void GuardarTodos(List<EventoDeportivo> eventos) {
-        var lineas = eventos.Select(e => $"{e.Id},{e.Nombre},{e.FechaHoraInicio:yyyy-MM-dd},{e.Lugar},{e.CupoMaximo},{e.DuracionHoras},{e.ResponsableId},{e.Descripcion}");
+        var lineas = eventos.Select(e => $"{e.Id},{e.Nombre},{e.FechaHoraInicio:yyyy-MM-dd HH:mm},{e.Lugar},{e.CupoMaximo},{e.DuracionHoras},{e.ResponsableId},{e.Descripcion}");
         File.WriteAllLines(archivo, lineas);
     }
 

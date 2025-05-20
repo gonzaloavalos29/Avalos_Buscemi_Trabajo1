@@ -19,7 +19,7 @@ Boolean ok = true;
     Console.WriteLine("3: Agregar Reserva: ");
     Console.WriteLine("4: Eliminar Persona: ");
     Console.WriteLine("5: Eliminar Evento Deportivo: ");
-    Console.WriteLine("6: Eliminar Reserva: ");
+    Console.WriteLine("6: Eliminar Reserva: ");  
     Console.WriteLine("7: Modificar Persona: ");
     Console.WriteLine("8: Modificar Evento Deportivo: ");
     Console.WriteLine("9: Modificar Reserva: ");

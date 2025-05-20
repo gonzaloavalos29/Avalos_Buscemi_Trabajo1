@@ -14,7 +14,7 @@ public class RepositorioReserva : IRepositorioReserva {
 
     public void Agregar(Reserva reserva) {
         reserva.Id = ObtenerNuevoId();
-        var linea = $"{reserva.Id},{reserva.Id},{reserva.PersonaId},{reserva.FechaAltaReserva:yyyy-MM-dd}";
+        var linea = $"{reserva.Id},{reserva.Id},{reserva.PersonaId},{reserva.FechaAltaReserva:yyyy-MM-dd},{reserva}";
         File.AppendAllLines(archivo, new[] { linea });
     }
 
@@ -50,11 +50,13 @@ public class RepositorioReserva : IRepositorioReserva {
         return File.ReadAllLines(archivo)
             .Select(l => l.Split(','))
             .Where(p => p.Length >= 4)
-            .Select(p => new Reserva {
+            .Select(p => new Reserva
+            {
                 Id = int.Parse(p[0]),
                 EventoDeportivoId = int.Parse(p[1]),
                 PersonaId = int.Parse(p[2]),
                 FechaAltaReserva = DateTime.Parse(p[3])
+                
             }).ToList();
     }
 

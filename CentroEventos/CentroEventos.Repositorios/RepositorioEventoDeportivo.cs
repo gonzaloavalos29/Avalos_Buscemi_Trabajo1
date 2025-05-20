@@ -14,7 +14,7 @@ public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo {
 
     public void Agregar(EventoDeportivo evento) {
         evento.Id = ObtenerNuevoId();
-        var linea = $"{evento.Id},{evento.Nombre},{evento.FechaHoraInicio:yyyy-MM-dd},{evento.Lugar}";
+        var linea = $"{evento.Id},{evento.Nombre},{evento.FechaHoraInicio:yyyy-MM-dd HH:mm},{evento.Lugar},{evento.CupoMaximo},{evento.DuracionHoras},{evento.ResponsableId},{evento.Descripcion}";
         File.AppendAllLines(archivo, [linea]);
     }
 
@@ -42,7 +42,12 @@ public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo {
                 Id = int.Parse(p[0]),
                 Nombre = p[1].Trim(),
                 FechaHoraInicio = DateTime.Parse(p[2]),
-                Lugar = p[3].Trim()
+                Lugar = p[3].Trim(),
+                CupoMaximo = int.Parse(p[4]),
+                DuracionHoras = int.Parse(p[5]),
+                ResponsableId = int.Parse(p[6]),
+                Descripcion=p[7]
+                
             }).ToList();
     }
 
@@ -63,7 +68,7 @@ public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo {
     }
 
     private void GuardarTodos(List<EventoDeportivo> eventos) {
-        var lineas = eventos.Select(e => $"{e.Id},{e.Nombre},{e.FechaHoraInicio:yyyy-MM-dd},{e.Lugar}");
+        var lineas = eventos.Select(e => $"{e.Id},{e.Nombre},{e.FechaHoraInicio:yyyy-MM-dd},{e.Lugar},{e.CupoMaximo},{e.DuracionHoras},{e.ResponsableId},{e.Descripcion}");
         File.WriteAllLines(archivo, lineas);
     }
 

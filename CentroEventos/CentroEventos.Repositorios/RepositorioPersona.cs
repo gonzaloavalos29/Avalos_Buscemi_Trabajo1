@@ -18,7 +18,7 @@ public class RepositorioPersona : IRepositorioPersona {
     public void Agregar(Persona persona) {
         persona.Id = ObtenerNuevoId();
         Directory.CreateDirectory("Personas");
-        var linea = $"{persona.Id},{persona.Nombre},{persona.Apellido},{persona.DNI},{persona.Email}";
+        var linea = $"{persona.Id},{persona.Nombre},{persona.Apellido},{persona.DNI},{persona.Email},{persona.Telefono}";
         File.AppendAllLines(archivo, [linea]);
     }
 

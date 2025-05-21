@@ -312,7 +312,7 @@ while (ok)
             var Lista = new PersonaListarUseCase(repo);
             foreach (var p in Lista.Ejecutar())
             {
-                Console.WriteLine($"{p.Id}: {p.Nombre} {p.Apellido} - DNI: {p.DNI} - Email: {p.Email} - Telefono{p.Telefono}");
+                Console.WriteLine($"{p.Id}: {p.Nombre} {p.Apellido} - DNI: {p.DNI} - Email: {p.Email} - Telefono: {p.Telefono}");
             }
             break;
         case "11":

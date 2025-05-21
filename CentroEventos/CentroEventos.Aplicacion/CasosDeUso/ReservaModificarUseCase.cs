@@ -17,7 +17,7 @@ public class ReservaModificarUseCase {
 
     public void Ejecutar(Reserva reserva,int idUsuario){
         if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaModificacion))
-                throw new UnauthorizedAccessException("El usuario no tiene permiso para modificar reservas.");
+            throw new UnauthorizedAccessException("El usuario no tiene permiso para modificar reservas.");
         var mod=_repo.ObtenerPorId(reserva.Id)??throw new EntidadNotFoundException("Reserva no encontrada");
         _repo.Modificar(reserva);
     }

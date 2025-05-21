@@ -21,7 +21,7 @@ public class EventoDeportivoModificarUseCase
     public void Ejecutar(EventoDeportivo evento,int idUsuario)
     {
         if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.EventoModificacion))
-                throw new UnauthorizedAccessException("El usuario no tiene permiso para modificar eventos.");
+            throw new UnauthorizedAccessException("El usuario no tiene permiso para modificar eventos.");
         var mod = _repoEvento.ObtenerPorId(evento.Id) ?? throw new EntidadNotFoundException("El evento no existe");
         if (evento.FechaHoraInicio < DateTime.Now) throw new OperacionInvalidaException("No se puede modificar un evento terminado");
 

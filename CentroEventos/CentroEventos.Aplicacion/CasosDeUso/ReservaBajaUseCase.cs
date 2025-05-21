@@ -19,7 +19,7 @@ public class ReservaBajaUseCase
     public void Ejecutar(int Id,int idUsuario)
     {
         if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.ReservaBaja))
-                throw new UnauthorizedAccessException("El usuario no tiene permiso para eliminar reservas.");
+            throw new UnauthorizedAccessException("El usuario no tiene permiso para eliminar reservas.");
         var del = _repo.ObtenerPorId(Id) ?? throw new EntidadNotFoundException("Reserva no encontrada");
         _repo.Eliminar(Id);
     }

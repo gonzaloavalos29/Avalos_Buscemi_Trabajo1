@@ -1,4 +1,5 @@
-﻿using CentroEventos.Aplicacion.Entidades;
+﻿
+using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.CasosDeUso;
 using CentroEventos.Repositorios;
 using CentroEventos.Aplicacion.Excepciones;
@@ -282,8 +283,8 @@ while (ok)
             }
             break;
         case "14":
-            //ListarEventoConcUPOdISPONIBLE
-            Console.WriteLine("Listado de Eventos con cupo dsiponible: ");
+            //ListarEventoConCupoDisponible
+            Console.WriteLine("Listado de Eventos con cupo disponible: ");
             var ListaEventosDisponibles = new ListarEventosConCupoDisponibleUseCase(repoevento, repoReserva);
             foreach (var e in ListaEventosDisponibles.Ejecutar())
                 Console.WriteLine($"Id: {e.Id} - Evento: {e.Nombre}: {e.Descripcion} - Fecha de inicio: {e.FechaHoraInicio} - Lugar: {e.Lugar}");

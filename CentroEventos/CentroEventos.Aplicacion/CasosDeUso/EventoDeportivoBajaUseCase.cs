@@ -18,7 +18,7 @@ public class EventoDeportivoBajaUseCase
 
     public void Ejecutar(int Id,int idUsuario){
         if (!_servicioAutorizacion.PoseeElPermiso(idUsuario, Permiso.EventoBaja))
-                throw new UnauthorizedAccessException("El usuario no tiene permiso para eliminar eventos.");
+            throw new UnauthorizedAccessException("El usuario no tiene permiso para eliminar eventos.");
         var del= _repositorioEvento.ObtenerPorId(Id)??throw new EntidadNotFoundException("Evento no encontrado");
         if(_repositorioReserva.ListarPorEvento(Id).Any())throw new OperacionInvalidaException("No se Puede eliminar un evento con reservas asociadas");
         _repositorioEvento.Eliminar(Id);

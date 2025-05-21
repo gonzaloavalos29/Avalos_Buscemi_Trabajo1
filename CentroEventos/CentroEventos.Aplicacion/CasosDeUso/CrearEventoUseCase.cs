@@ -1,4 +1,4 @@
-using CentroEventos.Aplicacion.Entidades;
+/*using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Servicios;
 using CentroEventos.Aplicacion.Interfaces;
 
@@ -17,4 +17,5 @@ namespace CentroEventos.Aplicacion.CasosDeUso;
                 throw new UnauthorizedAccessException("El usuario no tiene permiso para crear eventos.");
             _repositorioEvento.Guardar(evento);
         }
-    }
+    
+    }*/

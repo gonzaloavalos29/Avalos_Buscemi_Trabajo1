@@ -11,7 +11,7 @@ var repo = new RepositorioPersona();
 var repoevento = new RepositorioEventoDeportivo();
 var repoReserva = new RepositorioReserva();
 var servicioAutorizacion = new ServicioAutorizacionProvisorio();
-
+int idAutorizado = 1;
 Boolean ok = true;
     Console.WriteLine("0:Finalizar");
     Console.WriteLine("1: Agregar Persona:");
@@ -67,14 +67,14 @@ while (ok)
                 Telefono = telefono ?? ""
             };
 
-            var agregarPersona = new PersonaAltaUseCase(repo);
-            agregarPersona.Ejecutar(persona);
+            var agregarPersona = new PersonaAltaUseCase(repo,servicioAutorizacion);
+            agregarPersona.Ejecutar(persona,idAutorizado);
             Console.WriteLine($"Persona agregada con ID: {persona.Id}");
             break;
         case "2":
 
             Console.WriteLine("\n=== Alta de Evento ===");
-            var crearEvento = new EventoDeportivoAltaUseCase(repoevento, repo);
+            var crearEvento = new EventoDeportivoAltaUseCase(repoevento, repo,servicioAutorizacion);
             Console.Write("Nombre del Evento: ");
             string? nombreEvento = Console.ReadLine();
             Console.Write("Descripcion del Evento: ");
@@ -131,7 +131,7 @@ while (ok)
                 CupoMaximo = cupo,
                 ResponsableId = id
             };
-            crearEvento.Ejecutar(evento);
+            crearEvento.Ejecutar(evento,idAutorizado);
             break;
         case "3":
             //Reserva Alta
@@ -161,7 +161,7 @@ while (ok)
                 PersonaId = PersonaReservaId,
                 EventoDeportivoId = EventoReservaId
             };
-            AgregarReserva.Ejecutar(reserva, 1);
+            AgregarReserva.Ejecutar(reserva, idAutorizado);
             break;
         case "4":
             // Eliminar persona
@@ -171,8 +171,8 @@ while (ok)
             {
                 if (int.TryParse(inputEliminar, out int idEliminar))
                 {
-                    var eliminarPersona = new PersonaBajaUseCase(repo);
-                    eliminarPersona.Ejecutar(idEliminar);
+                    var eliminarPersona = new PersonaBajaUseCase(repo,servicioAutorizacion);
+                    eliminarPersona.Ejecutar(idEliminar,idAutorizado);
                     Console.WriteLine($"Persona con Id {idEliminar} eliminada");
                 }
                 else
@@ -189,8 +189,8 @@ while (ok)
             {
                 if (int.TryParse(eventoEliminar, out int idEvento))
                 {
-                    var bajaEvento = new EventoDeportivoBajaUseCase(repoevento, repoReserva);
-                    bajaEvento.Ejecutar(idEvento);
+                    var bajaEvento = new EventoDeportivoBajaUseCase(repoevento, repoReserva,servicioAutorizacion);
+                    bajaEvento.Ejecutar(idEvento,idAutorizado);
                     Console.WriteLine("Evento Eliminado con exito");
 
                 }
@@ -209,8 +209,8 @@ while (ok)
             {
                 if (int.TryParse(reservaEliminar, out int idReservaEliminar))
                 {
-                    var bajaReserva = new ReservaBajaUseCase(repoReserva);
-                    bajaReserva.Ejecutar(idReservaEliminar);
+                    var bajaReserva = new ReservaBajaUseCase(repoReserva,servicioAutorizacion);
+                    bajaReserva.Ejecutar(idReservaEliminar,idAutorizado);
                     Console.WriteLine("Reserva eliminada con exito");
                 }
                 else
@@ -229,12 +229,12 @@ while (ok)
                 if (encontrada is not null)
                 {
                     Console.WriteLine($"Encontrada: {encontrada.Nombre} {encontrada.Apellido}");
-                    var modificarPersona = new PersonaModificarUseCase(repo);
+                    var modificarPersona = new PersonaModificarUseCase(repo,servicioAutorizacion);
                     // Modificar email
                     Console.Write("Ingrese nuevo email para esta persona: ");
                     string? nuevoEmail = Console.ReadLine();
                     encontrada.Email = nuevoEmail ?? encontrada.Email;
-                    modificarPersona.Ejecutar(encontrada);
+                    modificarPersona.Ejecutar(encontrada,idAutorizado);
                     Console.WriteLine($"Email modificado para persona con ID {encontrada.Id}");
                 }
                 else
@@ -257,7 +257,7 @@ while (ok)
                 if (eventoEncontrado is not null)
                 {
                     Console.WriteLine($"Evento Encontrado: {eventoEncontrado.Nombre}");
-                    var Modificar = new EventoDeportivoModificarUseCase(repoevento, repo);
+                    var Modificar = new EventoDeportivoModificarUseCase(repoevento, repo,servicioAutorizacion);
                     Console.WriteLine("Insertar nueva fecha para el evento: ");
                     string? fechanueva = Console.ReadLine();
                     if (DateTime.TryParse(fechanueva, out DateTime fechaEvento))
@@ -269,7 +269,7 @@ while (ok)
                         Console.WriteLine("Fecha Invalida");
                     }
                     eventoEncontrado.FechaHoraInicio = fechaEvento;
-                    Modificar.Ejecutar(eventoEncontrado);
+                    Modificar.Ejecutar(eventoEncontrado,idAutorizado);
                     Console.WriteLine($"Evento con id {eventoEncontrado.Id} modificado con exito");
 
                 }
@@ -285,7 +285,7 @@ while (ok)
                 if (encontrarReserva is not null)
                 {
                     Console.WriteLine($"Reserva Encontrada: {encontrarReserva.Id}");
-                    var ModificarReserva = new ReservaModificarUseCase(repoReserva);
+                    var ModificarReserva = new ReservaModificarUseCase(repoReserva,servicioAutorizacion);
                     Console.WriteLine("Insertar nuevo id de evento: ");
                     string? idnuevo = Console.ReadLine();
                     if (int.TryParse(idnuevo, out int nuevoid))
@@ -297,7 +297,7 @@ while (ok)
                         Console.WriteLine("id Invalido");
                     }
                     encontrarReserva.Id = nuevoid;
-                    ModificarReserva.Ejecutar(encontrarReserva);
+                    ModificarReserva.Ejecutar(encontrarReserva,idAutorizado);
                     Console.WriteLine($"Evento con id {encontrarReserva.Id} modificado con exito");
                 }
             }

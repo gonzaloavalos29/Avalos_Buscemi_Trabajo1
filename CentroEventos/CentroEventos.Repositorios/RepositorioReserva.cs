@@ -14,7 +14,7 @@ public class RepositorioReserva : IRepositorioReserva {
 
     public void Agregar(Reserva reserva) {
         reserva.Id = ObtenerNuevoId();
-        var linea = $"{reserva.Id},{reserva.Id},{reserva.PersonaId},{reserva.FechaAltaReserva:yyyy-MM-dd HH:mm},{reserva}";
+        var linea = $"{reserva.Id},{reserva.EventoDeportivoId},{reserva.PersonaId},{reserva.FechaAltaReserva:yyyy-MM-dd HH:mm},{reserva}";
         File.AppendAllLines(archivo, new[] { linea });
     }
 

@@ -203,11 +203,13 @@ while (ok)
             //Modificar Evento
             Console.WriteLine("Ingresar id del evento a modificar: ");
             string? idEventoModificar = Console.ReadLine();
-            if (int.TryParse(idEventoModificar, out int idBuscarEvento)) {
+            if (int.TryParse(idEventoModificar, out int idBuscarEvento))
+            {
                 var eventoEncontrado = repoevento.ObtenerPorId(idBuscarEvento);
-                if (eventoEncontrado is not null) {
+                if (eventoEncontrado is not null)
+                {
                     Console.WriteLine($"Evento Encontrado: {eventoEncontrado.Nombre}");
-                    var Modificar = new EventoDeportivoModificarUseCase(repoevento, repo,servicioAutorizacion);
+                    var Modificar = new EventoDeportivoModificarUseCase(repoevento, repo, servicioAutorizacion);
                     Console.WriteLine("Insertar nueva fecha para el evento: ");
                     string? fechanueva = Console.ReadLine();
                     if (DateTime.TryParse(fechanueva, out DateTime fechaEvento))
@@ -215,9 +217,10 @@ while (ok)
                     else
                         Console.WriteLine("Fecha Invalida");
                     eventoEncontrado.FechaHoraInicio = fechaEvento;
-                    Modificar.Ejecutar(eventoEncontrado,idAutorizado);
+                    Modificar.Ejecutar(eventoEncontrado, idAutorizado);
                     Console.WriteLine($"Evento con id {eventoEncontrado.Id} modificado con exito");
                 }
+                else Console.WriteLine("no hay evento con ese id");
             }
             break;
         case "9":
@@ -235,9 +238,9 @@ while (ok)
                         Console.WriteLine("id valido");
                     else
                         Console.WriteLine("id Invalido");
-                    encontrarReserva.Id = nuevoid;
+                    encontrarReserva.EventoDeportivoId = nuevoid;
                     ModificarReserva.Ejecutar(encontrarReserva,idAutorizado);
-                    Console.WriteLine($"Evento con id {encontrarReserva.Id} modificado con exito");
+                    Console.WriteLine($"Reserva con id {encontrarReserva.Id} modificada con exito");
                 }
             }
             else

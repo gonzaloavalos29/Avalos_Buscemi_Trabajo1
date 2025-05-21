@@ -21,6 +21,7 @@ public class ListarAsistenciaAEventoUseCase
     public List<Persona> Ejecutar(int Id){
         var evento = _repoEventoDeportivo.ObtenerPorId(Id)??throw new EntidadNotFoundException("El evento no existe");
 
+        if(evento.FechaHoraInicio>DateTime.Now) throw new OperacionInvalidaException("El evento no ha ocurrido");
 
         var ReservasAsistieron= _repoReserva.ListarPorEvento(Id).Where(r=> r.EstadoAsistencia==EstadoAsistencia.Presente).ToList();
         var Personas =new  List<Persona>();

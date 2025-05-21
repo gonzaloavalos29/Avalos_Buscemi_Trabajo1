@@ -23,7 +23,7 @@ public class ValidadorReserva {
                 throw new EntidadNotFoundException("Evento Deportivo no encontrado");
             if (cantReservas >= EventoDeportivo.CupoMaximo)
                 throw new CupoExcedidoException();
-            if (_repoReservas.ExisteReserva(reserva.PersonaId, reserva.EventoDeportivoId))
+            if (_repoReservas.ExisteReserva(reserva.EventoDeportivoId,reserva.PersonaId))
                 throw new DuplicadoException("La Persona ya tiene una reserva para este evento");
     }
 }

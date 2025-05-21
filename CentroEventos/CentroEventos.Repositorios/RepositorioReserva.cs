@@ -14,7 +14,7 @@ public class RepositorioReserva : IRepositorioReserva {
 
     public void Agregar(Reserva reserva) {
         reserva.Id = ObtenerNuevoId();
-        var linea = $"{reserva.Id},{reserva.Id},{reserva.PersonaId},{reserva.FechaAltaReserva:yyyy-MM-dd},{reserva}";
+        var linea = $"{reserva.Id},{reserva.Id},{reserva.PersonaId},{reserva.FechaAltaReserva:yyyy-MM-dd HH:mm},{reserva}";
         File.AppendAllLines(archivo, new[] { linea });
     }
 
@@ -65,7 +65,7 @@ public class RepositorioReserva : IRepositorioReserva {
     }
 
     private void GuardarTodas(List<Reserva> reservas) {
-        var lineas = reservas.Select(r => $"{r.Id},{r.EventoDeportivoId},{r.PersonaId},{r.FechaAltaReserva:yyyy-MM-dd}");
+        var lineas = reservas.Select(r => $"{r.Id},{r.EventoDeportivoId},{r.PersonaId},{r.FechaAltaReserva:yyyy-MM-dd HH:mm}");
         File.WriteAllLines(archivo, lineas);
     }
 

@@ -74,7 +74,6 @@ while (ok)
         case "2":
 
             Console.WriteLine("\n=== Alta de Evento ===");
-            var crearEvento = new EventoDeportivoAltaUseCase(repoevento, repo,servicioAutorizacion);
             Console.Write("Nombre del Evento: ");
             string? nombreEvento = Console.ReadLine();
             Console.Write("Descripcion del Evento: ");
@@ -131,6 +130,7 @@ while (ok)
                 CupoMaximo = cupo,
                 ResponsableId = id
             };
+            var crearEvento = new EventoDeportivoAltaUseCase(repoevento, repo,servicioAutorizacion);
             crearEvento.Ejecutar(evento,idAutorizado);
             break;
         case "3":

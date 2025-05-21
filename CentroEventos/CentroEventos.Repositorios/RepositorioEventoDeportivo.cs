@@ -14,7 +14,7 @@ public class RepositorioEventoDeportivo : IRepositorioEventoDeportivo {
 
     public void Agregar(EventoDeportivo evento) {
         evento.Id = ObtenerNuevoId();
-        var linea = $"{evento.Id},{evento.Nombre},{evento.FechaHoraInicio:yyyy-MM-dd HH:mm},{evento.Lugar},{evento.CupoMaximo},{evento.DuracionHoras},{evento.ResponsableId},{evento.Descripcion}";
+        var linea = $"{evento.Id},{evento.Nombre},{evento.FechaHoraInicio:yyyy-MM-dd HH:mm},{ evento.Lugar},{evento.CupoMaximo},{evento.DuracionHoras},{evento.ResponsableId},{evento.Descripcion}";
         File.AppendAllLines(archivo, [linea]);
     }
 
